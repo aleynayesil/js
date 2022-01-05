@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const d = new Date();
+      const d2 = new Date("10-10-2021");
+      const d3 = new Date(2021, 10, 23, 10, 30);
+
+      console.log("d", d);
+      console.log("d2", d2);
+      console.log("d3", d3);
+      console.log("d2-type", typeof d2);
+
+      const today = new Date();
+      const hour = today.getHours();
+      const minute = today.getMinutes();
+      const day = today.getDate(); //ayın gününü getirir
+      const weekDay = today.getDay(); //haftanın gününü getirir indexdeğer döner
+      const mounth = today.getMonth(); //js ay değeri index mantığı ile tutlur 0-11
+      //haftanın günleride aynı 0-6
+      //0 pazar 6 cumartesi
+      console.log("today", today);
+      console.log("hour", hour);
+      console.log("minute", minute);
+      console.log("day", day);
+      console.log("weekDay", weekDay);
+      console.log("mounth", mounth);
+
+      today.setFullYear(2023);
+      console.log("yeni tarih", today);
+
+      //yeni metod eklemek için proptotype e gidip yeni metod eklenir
+      Date.prototype.addHours = function (h) {
+        this.setHours(this.getHours() + h);
+        return this;
+      };
+
+      Date.prototype.addYears = function (h) {
+        this.setFullYear(this.getFullYear() + h);
+        return this;
+      };
+
+      //nesneye yeni bir proporty ile genişlettil
+      //Date.prototype.turkishHour=0;
+      console.log("after-addHoursMethod", today.addHours(3));
+      console.log("after-addYearsMethod", today.addYears(-3));
+
+      Date.prototype.getFormattedDate = function (format = "dd/MM/yyyy") {
+        if (format == "dd/MM/yyyy") {
+          return `${this.getDate()}/${
+            this.getMonth() + 1
+          }/${this.getFullYear()}`; //string birleştirme ifadesi
+        } else if (format == "MM/dd/yyyy") {
+          return `${
+            this.getMonth() + 1
+          }/${this.getDate()}/${this.getFullYear()}`;
+        }
+
+        return this;
+      };
+
+      console.log("formatdate-tr", today.getFormattedDate("dd/MM/yyyy"));
+      console.log("formatdate-en", today.getFormattedDate("MM/dd/yyyy"));
+    </script>
+  </body>
+</html>

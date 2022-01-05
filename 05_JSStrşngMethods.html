@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let a = "   Merhaba dünya; merhaba gezegen   ";
+      let trimedA = a.trim(); //Merhaba dünya: merhaba gezegen
+      let splitString = a.split(";"); //['Merhaba dünya','merhaba gezegen']
+      let uppercaseValue = a.toUpperCase();
+      let lowercaseValue = a.toLowerCase();
+      let replaceValue = a.replace(";", "#"); //Merhaba dünya# merhaba gezegen
+      let substringValue = a.substring(2, 3); //rha//ikinci indexten itibaren 3 tane al
+      let concatValue = "ali".concat("tan"); //
+      let startsWith = "cenk".startsWith("c"); //tre ya da afalse döner ile başlıyor mu
+      let endsWith = "deniz".endsWith("z"); //tre ya da afalse döner ile bitiyor mu
+      let includes = "deniz".includes("e"); //tre ya da afalse döner ile içeriyor mu
+
+      let bold = "ali".bold(); //koyu font olur
+      let deneme = "deneme".fontsize(32); //32 punto
+
+      let isMatch = "123456".match(/[a-z]/); //a-z arası değğer geçerse değeri gösterir geçmezse boş döner
+
+      let test = /[a-z]/.test("ali"); //true ya da false
+      /\d/.test("15468451");
+    </script>
+  </body>
+</html>

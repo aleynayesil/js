@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const person = { name: "ali", suranme: "tan" };
+
+      //forin kullanarak bir objenşn içerisindeki propertylerde gezinti yapabilriz c3 ta karşılığı reflection
+      for (const prop in person) {
+        //Object.hasOwnProperty fonksiyon ile bu person objesi içerisinde person ın içerisindeki her bir propertyi kontrol ederiz
+        //prop value
+        if (Object.hasOwnProperty.call(person, prop)) {
+          // person.name
+          // person.suranme
+          const element = person[prop];
+        }
+      }
+      //not: eğer obje dizisi ile çalışıyorsak foreach ya da for of kullanırız
+      let persons = [
+        { name: "mert", surname: "çorukoğlu" },
+        { name: "furkan", surname: "biçer" },
+        { name: "eren", surname: "baba" },
+        { name: "aleyna", surname: "yeşil" },
+        { name: "mustafa", surname: "akdağ" },
+      ];
+
+      //fon of
+      for (let person of persons) {
+        console.log("person", person);
+      }
+
+      //foreach kullanımı
+      persons.forEach((person) => {
+        console.log("person2", person);
+      });
+
+      //number string isim listesi ya da başlangıç bitişi belli olan işlem için for tercih ederiz
+
+      let counter = 0;
+      for (let index = 0; index < 10; index++) {
+        counter++;
+      }
+
+      //dizi işlemleri
+      //diziye eleman ekleme
+      //spread operatörü ile diziye eleman eklmee yöntemi
+      //... spread operator anlamına gelir
+      //spread operatörü sonrasında , den sonra bir obje eklendiğimizden dolayı, son eleman olarak ekler
+      persons = [...persons, { name: "özge", surname: "ergezer" }];
+      //diziye ilk eleman olarak ekleme yapmak için
+      persons = [{ name: "furkan", surname: "eroğlu" }, ...persons];
+      console.log("persons-after-add", persons);
+      //ilk sıraa ekler
+      persons.push({ name: "taner", surname: "sayın" });
+      //son sıraya
+      persons.unshift({ name: "ramazan", surname: "güneş" });
+
+      //obje çıkarma
+      persons = persons.filter((x) => x.name != "ramazan");
+
+      console.log("filtered-persons", persons);
+
+      persons.splice(2, 1); //indexine 2. indeksdeki kişiyi çıkarır
+
+      console.log("filtered-persons-2", persons);
+
+      let personn = persons.find((x) => x.name == "mert");
+      if (person != undefined) {
+        person.name = "MERT";
+      }
+
+      let personIndex = persons.findIndex((x) => x.name == "taner");
+      persons[personIndex].name = "TANER";
+
+      console.log("updated-persons", persons);
+
+      //map c# slect
+      let personsSelectByName = persons.map((item) => {
+        return {
+          name: item.name.toUpperCase(),
+        };
+      });
+
+      console.log("personsSelectByName", personsSelectByName);
+    </script>
+  </body>
+</html>

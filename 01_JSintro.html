@@ -8,5 +8,88 @@
   </head>
   <body>
     <!-- ctrl+shift+v preview -->
+
+    <script>
+      //variables
+      //number,string,boolean,object
+
+      //var,const,let
+      //global scope değişkebler için var kullanırız
+      //const ya da let için block scope değişkebler için kullanılır
+      //değişken değeri alt kod satırlarında değişmeyecek ise const değişkenlşik gösterecek ise let
+
+      var counter = 0; //global scope variable
+      function Deneme() {
+        const isExist = true; //function scope;
+        //default değeri true ve bu değer aşağıda değişmiyor
+        if (isExist) {
+          let number = counter + 1; //block scope //değişebilir
+        }
+      }
+      const a = 10;
+      const b = 10.5;
+      const c = "deneme";
+      const d = true;
+      let e; //değişkene değer verilmezse undefined gelir
+      const f = null; //null olan değişkenler object tipinde yanımlanır
+      const g = 10 / 0; //sonucu infinity tanımsız döner
+      const k = "A"; //char tipi diye bir şey yok string tipinde tutlur
+      const h = 10 / "a"; //NaN not a number
+      //tek ve çift tırnak aynı şeyi ifade eder js developerlar genelde tek tırank tercih edrt
+      const names = ["Ali", "Ahmet", "Can"]; //dizi object
+      const nameObj = { name: "ali", surname: "can", age: 21 }; //literal object format object instab-nce alma yöntemi
+
+      //typeof değişkeni ile bir variable tipini öğreniriz
+      console.log("a", typeof a);
+      console.log("b", typeof b);
+      console.log("c", typeof c);
+      console.log("d", typeof d);
+      console.log("e", typeof e);
+      console.log("f", typeof f);
+      console.log("g", typeof g);
+      console.log("k", typeof k);
+      console.log("g-result", g);
+      console.log("h", typeof h);
+      console.log("namesarea", typeof names);
+      console.log("nameObj", typeof nameObj);
+
+      delete nameObj.age;
+      //bu kod ile çalışma zamanında bir objenin  propetysinş silebiliriz
+      nameObj["color"] = "yellow"; //property ekleyio değer ataması yaptık
+      nameObj.color = 1; //nesnenin propertysini string tiptan numbera çevirdik
+      console.log("nameObj-result", nameObj);
+
+      //bir aksiyonu yerine getiran mkod parçacıklarına fonksiyon deriz.c# da metod
+      const r = function () {
+        //function tipinde result verir
+      }; //literal function tanımlaması
+      console.log("r", typeof r);
+      r(); //func çalıştırma yöntemi
+
+      //js function davranış şekillerine göre değer döndürrü ve değer döndürmeyen function olarak 2 ye ayrılır.
+      function Sum(number1, number2) {
+        return Number(number1) + Number(number2);
+      }
+
+      //n1 ve n2 func parameters fakat tipi yok
+      //not : toplama işleminin sayısal bir anlam ifade etmesi için her iki parametter Number() function ile işaretleyip sayısal değere çevirdik.
+      //function dönüş tipi yok
+      //değer döndüren bir function ise return ile iaşretlenr
+
+      //tek satır arrow işlemi
+      const sumArrow = (number1, number2) => Number(number1) + Number(number2);
+
+      const sumArrow2 = (number1, number2) => {
+        return Number(number1) + Number(number2);
+      };
+
+      //default format function tanımlaması
+      function showMessage(message) {
+        alert(message);
+      }
+
+      //js developer function isimlerini camelcase yazma eğilimlerindedir
+      //yularıdakş örnek de değer döndürmeyen bir func örrneği
+    </script>
   </body>
 </html>
