@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+      <!-- örnek 1 -->
+    <!--butona tıklandığında p elementini göster gizle-->
+    <button onclick="Toggle()">göster gizle</button>
+    <p id="paraf" style="display: none">paragraf</p>
+    <!-- örnek 2-->
+    <select onchange="SelectCity(event)">
+      <!--input ve selectlerde event kullanılır -->
+      <option value="35">İzmir</option>
+      <option value="34">İstanbul</option>
+      <option value="01">Ankara</option>
+    </select>
+    seçilen şehrin plakası : <span id="selectedCity"></span>
+
+    <!--örnek 3-->
+    <input type="radio" data-value="Kadın" checked onchange="selectGender(event,'Kadın')" name="gender"> Kadın
+    <input type="radio" onchange="selectGender(event,'Erkek')" name="gender"> Erkek
+    <br>
+    Cinsiyet : <input type="text" id="gender" data-value='Kadın'></input>
+    <hr>
+    <script>
+        const selectGender =(event,gender) =>{
+            console.log('event',event);
+
+            const value=event.target.checked;
+            const element=document.getElementById('gender');
+            element.value=gender;
+        }
+
+    </script>
+    <!-- örnek 4 -->
+    <form name="userForm" onsubmit="submitForm(event)">
+        <input type="text" name="email">
+        <br>
+        <input type="text" name="username">
+        <br>
+        <input type="submit" value="login">
+    </form>
+
+    <script>
+        const submitForm=(event)=>{
+            event.preventDefault();//son yapılan işlemin geçersiz olması sayfa yenilenmemesi içn form gitmiyot
+            const errorArray=[];
+            const formValues={
+                email: userForm.email.value,
+                username:userForm.username.value,
+            };
+            console.log('formValues',formValues);
+
+            if (!formValues.email.includes('@')) {
+                errorArray.push('eposta formaında girin')
+            }else{
+                errorArray.push('');
+            }
+            if (formValues.username.lenght<8) {
+                errorArray.push('8 karakterden küçün olamaz');
+            }else{
+                errorArray.push('');
+            }
+        }
+
+
+
+
+    </script>
+    <!-- örnek 5 -->
+    <script>
+      const SelectCity = (event) => {
+        console.log("event", event);
+
+        const element = document.querySelector("#selectedCity");
+
+        element.textContent = event.target.value;
+      };
+
+      const Toggle = () => {
+        const parafElement = document.getElementById("paraf");
+        //style attribute değerini okumak için işlem yaptık
+        const displayValue = parafElement
+          .getAttribute("style")
+          .replace("display:", "");
+        console.log("displayValue", displayValue);
+
+        if (displayValue == "none") {
+          parafElement.setAttribute("style", "display:block");
+        } else {
+          parafElement.setAttribute("style", "display:none");
+        }
+        //parafElement.style.display = "none";
+      };
+    </script>
+  </body>
+</html>
